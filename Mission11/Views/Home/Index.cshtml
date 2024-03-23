@@ -1,0 +1,59 @@
+﻿@model BooksListViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Roper Reading Bookstore</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            padding-top: 3rem;
+        }
+
+        .book-card {
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #fff;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center mb-5">Welcome To Roper Reading Bookstore</h1>
+
+    <div class="row">
+        @foreach (Book b in Model.Books)
+        {
+            <div class="col-md-4">
+                <div class="card book-card">
+                    <div class="card-body">
+                        <h5 class="card-title">@b.Title</h5>
+                        <ul class="list-unstyled">
+                            <li><strong>Author:</strong> @b.Author</li>
+                            <li><strong>Publisher:</strong> @b.Publisher</li>
+                            <li><strong>ISBN:</strong> @b.Isbn</li>
+                            <li><strong>Category:</strong> @b.Category</li>
+                            <li><strong>Number of Pages:</strong> @b.PageCount</li>
+                            <li><strong>Price:</strong> @b.Price</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="mt-5">
+        <div page-model="@Model.PaginationInfo" page-action="Index"></div>
+    </div>
+</div>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
